@@ -1,0 +1,5 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/david/Desktop/GitHubRepos/Plantlife/Content/Misc/gameFont.spritefont","C:/Users/david/Desktop/GitHubRepos/Plantlife/Content/bin/DesktopGL/Misc/gameFont.xnb","FontDescriptionProcessor","SpriteFontContent",2065,70687,0.1577632
+"C:/Users/david/Desktop/GitHubRepos/Plantlife/Content/Misc/hover.png","C:/Users/david/Desktop/GitHubRepos/Plantlife/Content/bin/DesktopGL/Misc/hover.xnb","TextureProcessor","Texture2DContent",127,4181,0.0825366
+"C:/Users/david/Desktop/GitHubRepos/Plantlife/Content/Plants/ground.png","C:/Users/david/Desktop/GitHubRepos/Plantlife/Content/bin/DesktopGL/Plants/ground.xnb","TextureProcessor","Texture2DContent",243,1109,0.0011493
+"C:/Users/david/Desktop/GitHubRepos/Plantlife/Content/Plants/sunflower.png","C:/Users/david/Desktop/GitHubRepos/Plantlife/Content/bin/DesktopGL/Plants/sunflower.xnb","TextureProcessor","Texture2DContent",572,12373,0.0012557
