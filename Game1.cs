@@ -1,5 +1,6 @@
 ﻿using Comora;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using NoiseGenProject.Helpers;
@@ -17,10 +18,18 @@ namespace Plantlife
         private Camera camera;
         private Helper help = new();
 
+        private SoundEffect buttonplop;
+        private bool isFilledSlot;
+        private float isFilledTimer;
+
         private Vector2 PlayerPos = new(50, 50);
         private Vector2 mouseHoverPos;
         private KeyboardState kStateOld = Keyboard.GetState();
         private MouseState mStateOld = Mouse.GetState();
+
+        private float TimePassed;
+        private int CurrentDay = 1;
+        private int lastDay = 0;
 
         public Game1()
         {
@@ -31,8 +40,10 @@ namespace Plantlife
 
         protected override void Initialize()
         {
-            this.camera = new(_graphics.GraphicsDevice);
-            this.camera.Zoom = 4f;
+            this.camera = new(_graphics.GraphicsDevice)
+            {
+                Zoom = 4f
+            };
             base.Initialize();
         }
 
@@ -41,22 +52,9 @@ namespace Plantlife
             _spriteBatch = new(GraphicsDevice);
             GameData.LoadTextures(Content);
             GameData.LoadAnimTextures();
+            WorldGrid.LoadWorldContent();
 
-
-
-            for (int y = 0; y < 10; y++)
-            {
-                for (int x = 0; x < 10; x++)
-                {
-                    GameData.Map[x, y] = null;
-                }
-            }
-
-
-            GameData.Map[0, 1] = new Sunflower();
-            GameData.Map[2, 1] = new Sunflower();
-            GameData.Map[4, 3] = new Sunflower();
-
+            buttonplop = Content.Load<SoundEffect>("Audio/buttonplop");
             base.LoadContent();
         }
 
@@ -68,39 +66,84 @@ namespace Plantlife
                 KeyboardState kState = Keyboard.GetState();
                 float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
+                if(TimePassed >= 500)
+                {
+                    TimePassed = 0;
+                    CurrentDay++;
+                }
+                else
+                {
+                    TimePassed += dt * 100;
+                }
+
+                if (lastDay != CurrentDay)
+                {
+                    foreach (Plant plant in GameData.Map)
+                    {
+                        if (plant != null)
+                        {
+                            plant.Update();
+                        }
+                    }
+
+                    lastDay = CurrentDay;
+                }
+
+                if(isFilledSlot)
+                {
+                    if(isFilledTimer >= 20)
+                    {
+                        isFilledTimer = 0;
+                        isFilledSlot = false;
+                    }
+                    else
+                    {
+                        isFilledTimer += dt * 100;
+                    }
+                }
+
+
                 mouseHoverPos = help.GetMousePos(mState, camera);
 
                 if (mState.LeftButton == ButtonState.Pressed && mStateOld.LeftButton == ButtonState.Released)
                 {
                     // Get the mouse position
                     Vector2 mousePos = help.GetMousePos(mState, camera);
-                    int x = (int)mousePos.X / 16;
-                    int y = (int)mousePos.Y / 16;
+                    int x = (int)mousePos.X / GameData.TileSize;
+                    int y = (int)mousePos.Y / GameData.TileSize;
 
-
-                    if (x >= 0 && y >= 0 && x < 10 && y < 10)
+                    // Since Plants Can Be 32 Tall, and We only want the First "Square 16x16" of the Plant, we Just use 16x16 Here
+                    if (x >= 0 && y >= 0 && x < GameData.MapSize && y < GameData.MapSize)
                     {
                         Plant plant = GameData.Map[x, y];
-
-                        Rectangle blockRect = new(x * 16, y * 16, 16, 16);
+                        Rectangle blockRect = new(x * GameData.TileSize, y * GameData.TileSize, GameData.TileSize, GameData.TileSize);
 
                         if (plant != null && blockRect.Contains((int)mousePos.X, (int)mousePos.Y))
                         {
-                            if(plant.CurrFrame < 5)
-                            {
-                                plant.CurrFrame += 1;
-                            }
-                            else
-                            {
-                                plant.CurrFrame = 0;
-                            }
-
-                            plant.TextureAnim.setFrame(plant.CurrFrame);                           
+                            buttonplop.Play(0.5f, 0f, 0f);
+                            isFilledSlot = true;
                         }
                         else if (plant == null && blockRect.Contains((int)mousePos.X, (int)mousePos.Y))
                         {
-                            GameData.Map[x, y] = new Sunflower();
-                            Debug.WriteLine("This Can Be Farmed");
+                            buttonplop.Play(0.5f, 0.5f, 0f);
+
+                            Random random = new Random();
+                            int chance = random.Next(0, 100);
+
+                            if(chance < 50)
+                            {
+                                GameData.Map[x, y] = new Strawberry();
+                                Plant newplant = GameData.Map[x, y];
+                                GameData.Plants.Add(newplant);
+                            }
+                            else
+                            {
+                                GameData.Map[x, y] = new Sunflower();
+                                Plant newplant = GameData.Map[x, y];
+                                GameData.Plants.Add(newplant);
+                            }
+
+                            //Debug.WriteLine("This Can Be Farmed");
                         }
                     }
                 }
@@ -133,41 +176,11 @@ namespace Plantlife
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.DarkOliveGreen);
 
             _spriteBatch.Begin(this.camera, SpriteSortMode.FrontToBack, BlendState.AlphaBlend, samplerState: SamplerState.PointClamp);
 
-            //Draw Map
-            for (int y = 0; y < 10; y++)
-            {
-                for (int x = 0; x < 10; x++)
-                {
-                    // Calculate the position of the block on the screen
-                    Plant plant = GameData.Map[x, y];
-                    if (plant != null)
-                    {
-                        Vector2 blockPosition = new(x * 16, y * 16);
-                        _spriteBatch.Draw(GameData.Textures["Plants/Ground"], blockPosition, null, Color.White, 0.0f, Vector2.Zero, 1f, SpriteEffects.None, 0.0000000f);
-                        plant.Draw(_spriteBatch, help.GetDepth(plant.Origin, _graphics), blockPosition);
-
-                    }
-                    else
-                    {
-                        Vector2 blockPosition = new(x * 16, y * 16);
-                        _spriteBatch.Draw(GameData.Textures["Plants/Ground"], blockPosition, null, Color.White, 0.0f, Vector2.Zero, 1f, SpriteEffects.None, 0.0000000f);
-                    }
-                }
-            }
-
-            //Draw Hover Texture
-            Point mouseTile = new((int)(mouseHoverPos.X / 16), (int)(mouseHoverPos.Y / 16));
-            if (mouseTile.X >= 0 && mouseTile.X < 10 && mouseTile.Y >= 0 && mouseTile.Y < 10 && mouseHoverPos.X >= 0 && mouseHoverPos.Y >= 0)
-            {
-                //Plant plant = GameData.Map[mouseTile.X, mouseTile.Y];
-
-                Rectangle plantRect = new(mouseTile.X * 16, mouseTile.Y * 16, 16, 16);
-                _spriteBatch.Draw(GameData.Textures["Misc/Hover"], plantRect, null, Color.White, 0.0f, Vector2.Zero, SpriteEffects.None, 0.5f);
-            }
+                WorldGrid.DrawWorld(_spriteBatch, help, _graphics, mouseHoverPos, isFilledSlot);
 
             _spriteBatch.End();
 
@@ -176,7 +189,10 @@ namespace Plantlife
 
             _spriteBatch.Begin();
 
-            _spriteBatch.DrawString(GameData.GameFont, "Mouse Pos: " + mouseHoverPos.X.ToString() + " " + mouseHoverPos.Y.ToString(), new Vector2(5, 20), Color.White);
+            //_spriteBatch.DrawString(GameData.GameFont, "Mouse Pos: " + mouseHoverPos.X.ToString() + " " + mouseHoverPos.Y.ToString(), new Vector2(5, 20), Color.White);
+            _spriteBatch.DrawString(GameData.GameFont, "Day: " + CurrentDay.ToString(), new Vector2(5, 10), Color.White);
+            //_spriteBatch.DrawString(GameData.GameFont, "LastDay: " + lastDay.ToString(), new Vector2(5, 40), Color.White);
+
             _spriteBatch.End();
 
             #endregion

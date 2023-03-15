@@ -13,7 +13,7 @@ namespace Plantlife.Plants
     {
         public Sunflower() : base(new SpriteAnimation(GameData.Textures["Plants/Sunflower"], 6, 0))
         {
-
+            MaxFrames = 5;
         }
     }
 }

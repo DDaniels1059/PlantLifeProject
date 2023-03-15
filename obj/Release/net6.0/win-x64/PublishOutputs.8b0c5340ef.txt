@@ -1,0 +1,13 @@
+C:\Users\david\Desktop\PlantLife\Plantlife.exe
+C:\Users\david\Desktop\PlantLife\Content/Misc\gameFont.xnb
+C:\Users\david\Desktop\PlantLife\Content/Misc\hover.xnb
+C:\Users\david\Desktop\PlantLife\Content/Plants\ground.xnb
+C:\Users\david\Desktop\PlantLife\Content/Plants\sunflower.xnb
+C:\Users\david\Desktop\PlantLife\Plantlife.dll
+C:\Users\david\Desktop\PlantLife\Plantlife.deps.json
+C:\Users\david\Desktop\PlantLife\Plantlife.runtimeconfig.json
+C:\Users\david\Desktop\PlantLife\Plantlife.pdb
+C:\Users\david\Desktop\PlantLife\Comora.dll
+C:\Users\david\Desktop\PlantLife\MonoGame.Framework.dll
+C:\Users\david\Desktop\PlantLife\SDL2.dll
+C:\Users\david\Desktop\PlantLife\soft_oal.dll

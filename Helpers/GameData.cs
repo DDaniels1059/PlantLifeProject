@@ -12,10 +12,14 @@ namespace Plantlife.Helpers
 {
     internal class GameData
     {
-
-        public static Plant[,] Map = new Plant[10,10];
+        public static int MapSize = 5;
+        public static int TileSize = 16;
+        public static int TileWidth = 16;
+        public static int TileHeight = 32;
+        public static Plant[,] Map = new Plant[MapSize, MapSize];
         public static SpriteFont GameFont;
 
+        public static List<Plant> Plants = new List<Plant>();
 
         public static Dictionary<string, Texture2D> Textures;
         public static void LoadTextures(ContentManager content)
@@ -23,6 +27,7 @@ namespace Plantlife.Helpers
             Textures = new Dictionary<string, Texture2D>();
             Textures["Misc/Hover"] = content.Load<Texture2D>("Misc/hover");
             Textures["Plants/Sunflower"] = content.Load<Texture2D>("Plants/sunflower");
+            Textures["Plants/Strawberry"] = content.Load<Texture2D>("Plants/strawberry");
             Textures["Plants/Ground"] = content.Load<Texture2D>("Plants/ground");
 
             GameFont = content.Load<SpriteFont>("Misc/gameFont");
@@ -34,6 +39,8 @@ namespace Plantlife.Helpers
         {
             AnimTextures = new Dictionary<string, SpriteAnimation>();
             AnimTextures["Plants/Sunflower"] = new SpriteAnimation(Textures["Plants/Sunflower"], 6, 0);
+            AnimTextures["Plants/Strawberry"] = new SpriteAnimation(Textures["Plants/Strawberry"], 5, 0);
+
         }
     }
 }
