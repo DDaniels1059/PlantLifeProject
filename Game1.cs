@@ -91,7 +91,7 @@ namespace Plantlife
 
                 if(isFilledSlot)
                 {
-                    if(isFilledTimer >= 20)
+                    if(isFilledTimer >= 25)
                     {
                         isFilledTimer = 0;
                         isFilledSlot = false;
@@ -120,8 +120,19 @@ namespace Plantlife
 
                         if (plant != null && blockRect.Contains((int)mousePos.X, (int)mousePos.Y))
                         {
-                            buttonplop.Play(0.5f, 0f, 0f);
-                            isFilledSlot = true;
+                            if(!plant.isHarvestable)
+                            {
+                                if (!isFilledSlot)
+                                    buttonplop.Play(0.5f, 0f, 0f);
+
+                                isFilledSlot = true;
+                            }
+                            else
+                            {
+                                buttonplop.Play(0.5f, 0.5f, 0f);
+                                GameData.Plants.Remove(plant);
+                                GameData.Map[x, y] = null;
+                            }
                         }
                         else if (plant == null && blockRect.Contains((int)mousePos.X, (int)mousePos.Y))
                         {
@@ -148,7 +159,13 @@ namespace Plantlife
                     }
                 }
 
-                if(kState.IsKeyDown(Keys.W)) 
+                if (kState.IsKeyDown(Keys.Add) && kStateOld.IsKeyUp(Keys.Add))
+                {
+                    CurrentDay++;
+                }
+
+
+                if (kState.IsKeyDown(Keys.W)) 
                 {
                     PlayerPos.Y -= 225 * dt;
                 }

@@ -47,17 +47,13 @@ namespace Plantlife.Plants
 
         public void Update()
         {
-            // (condition) ? (expressionIfTrue) : (expressionIfFalse);
-
-            //if (CurrFrame < MaxFrames)
-            //    TextureAnim.setFrame(CurrFrame++);
-            //else
-            //{
-            //    TextureAnim.setFrame(MaxFrames);
-            //    isHarvestable = true;
-            //}
-
-            TextureAnim.setFrame((CurrFrame < MaxFrames) ? CurrFrame++ : (isHarvestable ? MaxFrames : CurrFrame));
+            if (CurrFrame < MaxFrames)
+                TextureAnim.setFrame(CurrFrame++);
+            else
+            {
+                TextureAnim.setFrame(MaxFrames);
+                isHarvestable = true;
+            }
         }
     }
 }
