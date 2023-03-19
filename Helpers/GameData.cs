@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using NoiseGenProject.Helpers;
 using Plantlife.Plants;
 using System;
 using System.Collections.Generic;
@@ -28,7 +27,11 @@ namespace Plantlife.Helpers
             Textures["Misc/Hover"] = content.Load<Texture2D>("Misc/hover");
             Textures["Plants/Sunflower"] = content.Load<Texture2D>("Plants/sunflower");
             Textures["Plants/Strawberry"] = content.Load<Texture2D>("Plants/strawberry");
+            Textures["Items/StrawberryIcon"] = content.Load<Texture2D>("Items/strawberryicon");
+
             Textures["Plants/Ground"] = content.Load<Texture2D>("Plants/ground");
+
+
 
             GameFont = content.Load<SpriteFont>("Misc/gameFont");
 

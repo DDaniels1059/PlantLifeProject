@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace NoiseGenProject.Helpers
+namespace Plantlife.Helpers
 {
     public class SpriteManager
     {

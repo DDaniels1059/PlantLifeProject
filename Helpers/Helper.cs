@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 
-namespace NoiseGenProject.Helpers
+namespace Plantlife.Helpers
 {
     class Helper
     {

@@ -28,3 +28,5 @@ C:\Users\david\Desktop\GitHubRepos\PlantLifeProject\obj\Release\net6.0\refint\Pl
 C:\Users\david\Desktop\GitHubRepos\PlantLifeProject\obj\Release\net6.0\Plantlife.pdb
 C:\Users\david\Desktop\GitHubRepos\PlantLifeProject\obj\Release\net6.0\Plantlife.genruntimeconfig.cache
 C:\Users\david\Desktop\GitHubRepos\PlantLifeProject\obj\Release\net6.0\ref\Plantlife.dll
+C:\Users\david\Desktop\GitHubRepos\PlantLifeProject\bin\Release\net6.0\Content\Audio\buttonplop.xnb
+C:\Users\david\Desktop\GitHubRepos\PlantLifeProject\bin\Release\net6.0\Content\Plants\strawberry.xnb

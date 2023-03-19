@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using NoiseGenProject.Helpers;
 using Plantlife.Plants;
 using System;
 using System.Collections.Generic;
@@ -53,19 +52,23 @@ namespace Plantlife.Helpers
             }
 
             //Draw Hover Texture
-            Point mouseTile = new((int)(MouseHoverPos.X / GameData.TileSize), (int)(MouseHoverPos.Y / GameData.TileSize));
+            Point mouseTile = new Point((int)(MouseHoverPos.X / GameData.TileSize), (int)(MouseHoverPos.Y / GameData.TileSize));
             if (mouseTile.X >= 0 && mouseTile.X < GameData.MapSize && mouseTile.Y >= 0 && mouseTile.Y < GameData.MapSize && MouseHoverPos.X >= 0 && MouseHoverPos.Y >= 0)
             {
-                //Plant plant = GameData.Map[mouseTile.X, mouseTile.Y];
-                Rectangle plantRect = new(mouseTile.X * GameData.TileSize, mouseTile.Y * GameData.TileSize, GameData.TileSize, GameData.TileSize);
+                Rectangle plantRect = new Rectangle(mouseTile.X * GameData.TileSize, mouseTile.Y * GameData.TileSize, GameData.TileSize, GameData.TileSize);
 
-                if (isFilledSlot)
+                // Check if mouse position is within inner 10x10 of the plant sprite
+                if (MouseHoverPos.X > plantRect.X + 1 && MouseHoverPos.X < plantRect.Right - 1 &&
+                    MouseHoverPos.Y > plantRect.Y + 1 && MouseHoverPos.Y < plantRect.Bottom - 1)
                 {
-                    _spriteBatch.Draw(GameData.Textures["Misc/Hover"], plantRect, null, Color.Red, 0.0f, Vector2.Zero, SpriteEffects.None, 0.0000001f);
-                }
-                else
-                {
-                    _spriteBatch.Draw(GameData.Textures["Misc/Hover"], plantRect, null, Color.Black, 0.0f, Vector2.Zero, SpriteEffects.None, 0.0000001f);
+                    if (isFilledSlot)
+                    {
+                        _spriteBatch.Draw(GameData.Textures["Misc/Hover"], plantRect, null, Color.Red, 0.0f, Vector2.Zero, SpriteEffects.None, 0.0000001f);
+                    }
+                    else
+                    {
+                        _spriteBatch.Draw(GameData.Textures["Misc/Hover"], plantRect, null, Color.Black, 0.0f, Vector2.Zero, SpriteEffects.None, 0.0000001f);
+                    }
                 }
             }
         }

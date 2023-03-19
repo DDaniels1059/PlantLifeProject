@@ -1,5 +1,6 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
 "C:/Users/david/Desktop/GitHubRepos/PlantLifeProject/Content/Audio/buttonplop.mp3","C:/Users/david/Desktop/GitHubRepos/PlantLifeProject/Content/bin/DesktopGL/Content/Audio/buttonplop.xnb","SoundEffectProcessor","SoundEffectContent",4152,32549,0.1799678
+"C:/Users/david/Desktop/GitHubRepos/PlantLifeProject/Content/Items/strawberryicon.png","C:/Users/david/Desktop/GitHubRepos/PlantLifeProject/Content/bin/DesktopGL/Content/Items/strawberryicon.xnb","TextureProcessor","Texture2DContent",242,1109,0.0908281
 "C:/Users/david/Desktop/GitHubRepos/PlantLifeProject/Content/Misc/gameFont.spritefont","C:/Users/david/Desktop/GitHubRepos/PlantLifeProject/Content/bin/DesktopGL/Content/Misc/gameFont.xnb","FontDescriptionProcessor","SpriteFontContent",2065,70687,0.1836912
 "C:/Users/david/Desktop/GitHubRepos/PlantLifeProject/Content/Misc/hover.png","C:/Users/david/Desktop/GitHubRepos/PlantLifeProject/Content/bin/DesktopGL/Content/Misc/hover.xnb","TextureProcessor","Texture2DContent",164,4181,0.0808044
 "C:/Users/david/Desktop/GitHubRepos/PlantLifeProject/Content/Plants/ground.png","C:/Users/david/Desktop/GitHubRepos/PlantLifeProject/Content/bin/DesktopGL/Content/Plants/ground.xnb","TextureProcessor","Texture2DContent",95,1109,0.0827878

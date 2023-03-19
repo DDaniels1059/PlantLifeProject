@@ -1,5 +1,6 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using NoiseGenProject.Helpers;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 using Plantlife.Helpers;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,11 @@ namespace Plantlife.Plants
         public Strawberry() : base(new SpriteAnimation(GameData.Textures["Plants/Strawberry"], 5, 0))
         {
             MaxFrames = 4;
+        }
+
+        public override void DropItem()
+        {
+
         }
     }
 }

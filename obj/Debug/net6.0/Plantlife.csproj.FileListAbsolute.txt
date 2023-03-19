@@ -60,3 +60,4 @@ C:\Users\david\Desktop\GitHubRepos\PlantLifeProject\obj\Debug\net6.0\Plantlife.g
 C:\Users\david\Desktop\GitHubRepos\PlantLifeProject\obj\Debug\net6.0\ref\Plantlife.dll
 C:\Users\david\Desktop\GitHubRepos\PlantLifeProject\bin\Debug\net6.0\Content\Plants\strawberry.xnb
 C:\Users\david\Desktop\GitHubRepos\PlantLifeProject\bin\Debug\net6.0\Content\Audio\buttonplop.xnb
+C:\Users\david\Desktop\GitHubRepos\PlantLifeProject\bin\Debug\net6.0\Content\Items\strawberryicon.xnb

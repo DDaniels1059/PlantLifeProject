@@ -1,5 +1,6 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using NoiseGenProject.Helpers;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 using Plantlife.Helpers;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,11 @@ namespace Plantlife.Plants
         public Sunflower() : base(new SpriteAnimation(GameData.Textures["Plants/Sunflower"], 6, 0))
         {
             MaxFrames = 5;
+        }
+
+        public override void DropItem()
+        {
+
         }
     }
 }

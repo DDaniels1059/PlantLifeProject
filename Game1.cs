@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using NoiseGenProject.Helpers;
 using Plantlife.Helpers;
 using Plantlife.Plants;
 using System;
@@ -91,7 +90,7 @@ namespace Plantlife
 
                 if(isFilledSlot)
                 {
-                    if(isFilledTimer >= 25)
+                    if(isFilledTimer >= 20)
                     {
                         isFilledTimer = 0;
                         isFilledSlot = false;
@@ -130,6 +129,7 @@ namespace Plantlife
                             else
                             {
                                 buttonplop.Play(0.5f, 0.5f, 0f);
+                                //plant.DropItem(plant.DropPos, Content);
                                 GameData.Plants.Remove(plant);
                                 GameData.Map[x, y] = null;
                             }
@@ -163,7 +163,6 @@ namespace Plantlife
                 {
                     CurrentDay++;
                 }
-
 
                 if (kState.IsKeyDown(Keys.W)) 
                 {

@@ -1,7 +1,9 @@
 C:\Users\david\Desktop\PlantLife\Plantlife.exe
+C:\Users\david\Desktop\PlantLife\Content/Audio\buttonplop.xnb
 C:\Users\david\Desktop\PlantLife\Content/Misc\gameFont.xnb
 C:\Users\david\Desktop\PlantLife\Content/Misc\hover.xnb
 C:\Users\david\Desktop\PlantLife\Content/Plants\ground.xnb
+C:\Users\david\Desktop\PlantLife\Content/Plants\strawberry.xnb
 C:\Users\david\Desktop\PlantLife\Content/Plants\sunflower.xnb
 C:\Users\david\Desktop\PlantLife\Plantlife.dll
 C:\Users\david\Desktop\PlantLife\Plantlife.deps.json

@@ -5,6 +5,7 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/david/Desktop/GitHubRepos/PlantLifeProject/Content/Audio/buttonplop.mp3</File>
+    <File>C:/Users/david/Desktop/GitHubRepos/PlantLifeProject/Content/Items/strawberryicon.png</File>
     <File>C:/Users/david/Desktop/GitHubRepos/PlantLifeProject/Content/Misc/gameFont.spritefont</File>
     <File>C:/Users/david/Desktop/GitHubRepos/PlantLifeProject/Content/Misc/hover.png</File>
     <File>C:/Users/david/Desktop/GitHubRepos/PlantLifeProject/Content/Plants/ground.png</File>
@@ -12,6 +13,7 @@
     <File>C:/Users/david/Desktop/GitHubRepos/PlantLifeProject/Content/Plants/sunflower.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
